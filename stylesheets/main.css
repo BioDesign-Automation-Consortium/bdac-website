@@ -46,16 +46,33 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--heading-font);
   color: var(--dark-green);
   line-height: 1.2;
   margin-top: 0;
 }
 
-h1 { font-size: 2.75rem; font-weight: 700; }
-h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
-h3 { font-size: 1.35rem; font-weight: 700; }
+h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
 
 a {
   color: var(--primary-green);
@@ -73,7 +90,9 @@ img {
   height: auto;
 }
 
-ul { padding-left: 1.25rem; }
+ul {
+  padding-left: 1.25rem;
+}
 
 /* ============================================
    Container
@@ -84,6 +103,12 @@ ul { padding-left: 1.25rem; }
   padding: 0 1.5rem;
 }
 
+/* ============================================
+   Sticky Nav
+   ============================================ */
+/* ============================================
+   Sticky Nav
+   ============================================ */
 /* ============================================
    Sticky Nav
    ============================================ */
@@ -108,12 +133,15 @@ ul { padding-left: 1.25rem; }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  /* Increased gap */
   font-family: var(--heading-font);
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--dark-green);
   text-decoration: none;
+  line-height: 1;
+  /* Reset line-height for better alignment */
 }
 
 .nav-logo:hover {
@@ -122,8 +150,11 @@ ul { padding-left: 1.25rem; }
 }
 
 .nav-logo img {
-  height: 36px;
+  height: 40px;
+  /* Slightly larger */
   width: auto;
+  display: block;
+  /* Removes inline gap */
 }
 
 .nav-links {
@@ -194,7 +225,9 @@ ul { padding-left: 1.25rem; }
 .hero .hero-logo {
   max-width: 400px;
   margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1);
+  /* Removed filter: brightness(0) invert(1); to show original logo */
+  border-radius: 10px;
+  /* Soften edges of the white logo box */
 }
 
 .hero p {
@@ -364,6 +397,9 @@ ul { padding-left: 1.25rem; }
   border-radius: var(--border-radius);
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .activity-card:hover {
@@ -372,16 +408,19 @@ ul { padding-left: 1.25rem; }
 }
 
 .activity-card a {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: var(--text-color);
+  height: 100%;
 }
 
 .activity-card img {
   width: 100%;
   height: 160px;
-  object-fit: contain;
-  padding: 1rem;
+  object-fit: cover;
+  padding: 0;
+  /* Removing padding to let image fill the area, if desired, or keep padding but ensure uniform look */
   background: var(--gray-100);
 }
 
@@ -392,6 +431,11 @@ ul { padding-left: 1.25rem; }
   text-align: center;
   font-family: var(--heading-font);
   color: var(--dark-green);
+  flex-grow: 1;
+  /* Ensures text area expands if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================================
@@ -465,6 +509,9 @@ ul { padding-left: 1.25rem; }
   padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .person-card:hover {
@@ -477,6 +524,8 @@ ul { padding-left: 1.25rem; }
   align-items: center;
   gap: 1.25rem;
   margin-bottom: 1rem;
+  min-height: 250px;
+  /* Fixed height to align bio start on all cards */
 }
 
 .person-img {
@@ -485,6 +534,11 @@ ul { padding-left: 1.25rem; }
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--light-green-bg);
+  flex-shrink: 0;
+}
+
+.person-info {
+  flex: 1;
 }
 
 .person-info h3 {
@@ -522,7 +576,8 @@ ul { padding-left: 1.25rem; }
   line-height: 1.7;
   border-top: 1px solid var(--gray-200);
   padding-top: 1rem;
-  margin-top: 1rem;
+  margin-top: auto;
+  /* Pushes bio to bottom of card */
 }
 
 .person-bio p {
@@ -642,15 +697,33 @@ ul { padding-left: 1.25rem; }
     --section-padding: 3rem 0;
   }
 
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
+  h1 {
+    font-size: 2rem;
+  }
 
-  .hero { padding: 4rem 1.5rem; }
-  .hero h1 { font-size: 2.25rem; }
-  .hero .hero-logo { max-width: 280px; }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-  .page-header { padding: 2.5rem 1.5rem; }
-  .page-header h1 { font-size: 1.75rem; }
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero .hero-logo {
+    max-width: 280px;
+  }
+
+  .page-header {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.75rem;
+  }
 
   .feature-grid {
     grid-template-columns: 1fr;
